@@ -1,0 +1,174 @@
+.content-box h1 {
+    /* Dono mien se koi aik font-family choose karein: */
+    font-family: 'Cinzel Decorative', serif; 
+   
+
+    color: #e2e8f0;         
+    font-size: 3.5rem;         
+    font-weight: 700;
+    margin-bottom: 25px;
+    
+
+    letter-spacing: 3px;       
+    text-transform: uppercase; /* Saare letters CAPITAL karne ke liye */
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Full page dark background container */
+.hero-container {
+    /* Exact wahi professional colors hain lekin linear pattern mien taake animation chale */
+    background: linear-gradient(135deg, #020c1b, #051c38, #176587, #299fc2, #176587, #051c38, #020c1b);
+    background-size: 400% 400%; /* Size ko bada kiya taake colors smoothly move karein */
+    
+    /* Animation name: colorWave, duration: 12 seconds, loop: infinite */
+    animation: colorWave 12s ease infinite;
+
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+/* Content box styling */
+.content-box {
+    text-align: center;
+    max-width: 700px;
+    width: 100%;
+}
+
+/* Heading styling */
+.content-box h1 {
+    color: #f8fafc;            /* Off-white text */
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+/* Paragraph text styling */
+.content-box p {
+    color: #94a3b8;            /* Muted greyish text for dark mode readability */
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+/* Button container */
+.button-group {
+    display: flex;
+    gap: 20px;                 /* Buttons ke beech ka gap */
+    justify-content: center;
+    flex-wrap: wrap;           /* Mobile screens par buttons handle karne k liye */
+}
+
+/* Base styling for both buttons */
+.btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth hover transition */
+}
+
+/* Primary Button (Bright/Accent color) */
+.btn-primary {
+    background-color:transparent; /* Premium Blue */
+    color:  #046785;
+    border: 2px solid #023349;
+}
+
+.btn-primary:hover {
+    background-color: #03495c; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Secondary Button (Outline/Subtle color) */
+.btn-secondary {
+    background-color: transparent;
+    color: #134566;
+    border: 2px solid #033b4d;  /* Border color */
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background-color: #043657; /* Subtle background highlight */
+    border-color: #01334b;
+    transform: translateY(-2px);
+}
+/* Naya working animation logic */
+/* @keyframes colorWave {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+} */
+/* Container for bubbles */
+.bubbles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1; 
+    pointer-events: none; 
+}
+
+/* Z-index adjustment for content block */
+.content-box {
+    position: relative;
+    z-index: 2; 
+}
+
+/* Base style for glitter bubbles */
+.bubbles-container span {
+    position: absolute;
+    bottom: -20px; 
+    background: rgba(41, 159, 194, 0.4); 
+    box-shadow: 0 0 10px rgba(41, 159, 194, 0.8), 0 0 20px rgba(41, 159, 194, 0.4); 
+    border-radius: 50%;
+    animation: floatUp 8s infinite linear;
+}
+
+/* Individual bubble customization */
+.bubbles-container span:nth-child(1) { left: 10%; width: 6px; height: 6px; animation-duration: 7s; animation-delay: 0s; }
+.bubbles-container span:nth-child(2) { left: 25%; width: 4px; height: 4px; animation-duration: 10s; animation-delay: 2s; }
+.bubbles-container span:nth-child(3) { left: 40%; width: 8px; height: 8px; animation-duration: 6s; animation-delay: 1s; }
+.bubbles-container span:nth-child(4) { left: 55%; width: 5px; height: 5px; animation-duration: 9s; animation-delay: 4s; }
+.bubbles-container span:nth-child(5) { left: 70%; width: 7px; height: 7px; animation-duration: 8s; animation-delay: 3s; }
+.bubbles-container span:nth-child(6) { left: 85%; width: 4px; height: 4px; animation-duration: 11s; animation-delay: 5s; }
+.bubbles-container span:nth-child(7) { left: 18%; width: 5px; height: 5px; animation-duration: 7s; animation-delay: 1.5s; }
+.bubbles-container span:nth-child(8) { left: 48%; width: 6px; height: 6px; animation-duration: 9s; animation-delay: 3.5s; }
+.bubbles-container span:nth-child(9) { left: 65%; width: 4px; height: 4px; animation-duration: 12s; animation-delay: 0.5s; }
+.bubbles-container span:nth-child(10) { left: 92%; width: 8px; height: 8px; animation-duration: 7.5s; animation-delay: 2.5s; }
+
+/* Animation to move bubbles up and fade them out */
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1; 
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-110vh) scale(0.5); 
+        opacity: 0; 
+    }
+}
+

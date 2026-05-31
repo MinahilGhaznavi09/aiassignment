@@ -1,0 +1,78 @@
+/* 1. Main Background Container Fix */
+.hero-container {
+    background: linear-gradient(135deg, #020c1b, #051c38, #176587, #299fc2, #176587, #051c38, #020c1b);
+    background-size: 400% 400%;
+    animation: colorWave 12s ease infinite;
+    
+    /* CRITICAL FIXES FOR LONG CONTENT */
+    min-height: 100vh;       /* Height ko fix nahi rakhna, taake background scroll ke sath barhta rahe */
+    height: auto;            /* Automatic adjust hoga */
+    width: 100%;
+    display: block;          /* Flexbox hata kar block kiya taake headings line-by-line chalien */
+    padding: 80px 40px;      /* Top, bottom aur sides par thoda khula gap diya */
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* 2. Content Box Fix */
+.content-box {
+    position: relative;
+    z-index: 2;
+    max-width: 950px;        /* Text readable rakhne k liye behtar width */
+    margin: 0 auto;          /* Is se saara content page ke bilkul center mien rahega */
+    text-align: left;        /* Default text alignment */
+}
+
+/* 3. Headings aur Paragraphs ke darmiyan spacing */
+.content-box h1, .content-box h2, .content-box h3, .content-box h4 {
+    font-family: 'DM Serif Display', 'Cinzel Decorative', serif;
+    color: #1794dd;
+    margin-top: 40px;        /* Har heading se upar gap taake pichle text se mix na ho */
+    margin-bottom: 20px;     /* Heading ke neeche paragraph se gap */
+    line-height: 1.4;
+    display: block;          /* Alag line mien rakhne k liye */
+}
+
+.content-box p {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 30px;     /* Har paragraph ke baad gap */
+}
+
+/* Shuru ki 3 headings ko center karne wala logic */
+.content-box h1:nth-of-type(-n+3), 
+.content-box h2:nth-of-type(-n+3) {
+    text-align: center;
+}
+/* Images ko page ke center mein lane wala container */
+.image-center-wrapper {
+    display: flex;
+    justify-content: center; /* Horizontally center karne ke liye */
+    align-items: center;     /* Vertically center karne ke liye */
+    
+    /* Spacing: Top aur Bottom mein 40px ka gap, aur left/right automatic spacing */
+    margin: 40px auto; 
+    
+    /* Sides se extra padding taake text ke sath bilkul chipke nahi */
+    padding: 0 20px; 
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Container ke andar mojud saari images ko ek barabar karne ke liye */
+.image-center-wrapper img {
+    max-width: 850px;       /* Sab images ki maximum width ek barabar fix kar di */
+    width: 100%;            /* Choti screens par automatic scale hone ke liye */
+    height: auto;           /* Aspect ratio kharab na ho aur image stretch na lage */
+    
+    border-radius: 8px;     /* Corners ko smooth rounded karne ke liye (Premium look) */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); /* Dark theme par image ke gird halki shadow */
+    
+    transition: transform 0.3s ease; /* Hover effect ke liye transition */
+}
+
+/* Optional: Jab image par mouse le kar jayein to thodi si zoom ho */
+.image-center-wrapper img:hover {
+    transform: scale(1.02);
+}

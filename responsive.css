@@ -1,0 +1,36 @@
+
+@media (max-width: 768px) {
+    
+    /* AI Agent Page ke liye */
+    pre {
+        white-space: pre-wrap; /* Code automatic next line me chala jaye */
+        word-wrap: break-word;
+    }
+    
+    /* Cricket Dataset Page ki Images/Tables ke liye */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+
+@media (max-width: 480px) {
+    
+   
+    h1 {
+        font-size: 2rem !important; 
+    }
+    
+    /* Buttons ko aik ke niche aik lane ke liye */
+    .button-group, .buttons { 
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .btn, button {
+        width: 100%;
+        max-width: 260px;
+    }
+}

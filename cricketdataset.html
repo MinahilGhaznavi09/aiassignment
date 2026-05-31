@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Dataset Analysis</title>
+    <link rel="stylesheet" href="cricketstyle.css">
+    <link rel="stylesheet" href="responsive.css">
+
+</head>
+<body>
+
+    <div class="hero-container">
+        <div class="content-box headings-page">
+            
+            <h1>ALTAIR STUDIO IMPLEMENTATION</h1>
+            <h1>PROJECT REPORT</h1>
+            <h1>Babar Azam Strike Rate Analysis Using Decision Tree</h1>
+            
+            <h1>1.Objective</h1>
+            <p>
+                The primary objective of this project is to analyze the batsman (babar azam)performance data and predict whether the target has been achieved based on their strike rate. Specifically, the model utilizes a Decision Tree algorithm to classify the outcomes, establishing that if the batsman's strike rate is greater than 122 (>=122), the target is successfully achieved ('Yes'); otherwise, if the strike rate is 122 or below (<=122), the target is not achieved ('No').
+            </p>
+            <h1>2. Data Collection Source & Procedure</h1>
+            <p>
+                <b>Source:</b> The data is collected from a structured CSV file containing historical match statistics of the batsman.<br>
+            <b>Procedure:</b> The CSV dataset was imported into the Altair AI Studio environment. Preprocessing and data cleansing steps were performed, and the Set Role operator was utilized to explicitly define the target label (Target_Achieved) and the predictive feature (Strike_Rate).
+            </p>
+            <div class="image-center-wrapper">
+            
+            <img src="Screenshot (350).png">
+            </div>
+
+            <h1>3. Selection and Justification of ML Technique</h1>
+            <p>
+                The machine learning technique selected for this project is Supervised Machine Learning (Classification).
+          	<b>Justification:</b> Since the target variable to be predicted is discrete and categorical (Yes or No), classification is the most appropriate and logically sound technique to segment the match data into distinct outcomes.
+
+            </p>
+            <h1>4. Selection of Specific Algorithm</h1>
+            <p>
+                The Decision Tree algorithm was selected to build the classification model.
+             <b>Justification:</b> As shown in the Decision Tree automatically identified Strike_Rate as the most significant splitting feature. This algorithm is highly favored for its simplicity, visual interpretability, and its ability to easily generate human-readable IF-THEN rules that can be seamlessly translated into AI logical structures like Prolog.
+
+            </p>
+            <h1>
+                5. Division of Dataset for Learning & Evaluation
+                </h1>
+    
+            <p>
+                "To evaluate the performance of our machine learning model accurately, the dataset was partitioned into distinct subsets for training and evaluation using the 'Split Data' operator in Altair AI Studio. As shown in the configuration, a 70/30 split ratio was implemented: 70% (0.7) of the data was allocated as the training set (Learning phase) to train the model and identify patterns, while the remaining 30% (0.3) was reserved as the testing set (Evaluation phase) to validate the model's predictive accuracy on unseen data. This standard division ensures that the model is neither underfitted nor overfitted, providing a reliable measure of its real-world performance."
+            </p>
+            <div class="image-center-wrapper">
+            <img src="Screenshot (349).png">
+            </div>
+            <h1>6. Model Visual & Description</h1>
+            <h2>A. Process Workflow Architecture</h2>
+            <p>
+                Data Ingestion & Role Assignment: The dataset is loaded via the Read CSV operator, and the target label is defined using the Set Role operator to guide supervised learning.<br>
+	            Data Partitioning: The Split Data operator divides the dataset into training and testing subsets to ensure unbiased evaluation.<br>
+            	Model Training & Evaluation: The training partition is fed into the Decision Tree operator. The trained model is then duplicated via the Multiply operator, allowing it to be visualized directly while simultaneously being passed to the Apply Model and Performance operators to test its accuracy on unseen data.<br>
+
+              </p>
+              <div class="image-center-wrapper">
+              <img src="Screenshot (345).png">
+              </div>
+              <h2>
+                B. Visual Graph Analysis
+              </h2>
+              <p>Root Node (Strike_Rate): The model identifies Strike_Rate as the absolute mathematical root of the tree. This indicates that among all available attributes in the dataset, the batsman's strike rate contains the highest Information Gain (lowest entropy), making it the most dominant predictor for classification.<br>
+	            Right Branch (> 122): If a batsman’s Strike Rate is strictly greater than 122, the model branches to the right, leading directly to a leaf node that predicts "Yes".<br>
+	            Left Branch (≤ 122): Conversely, if the Strike Rate is less than or equal to 122, the model navigates down the left branch, resulting in a leaf node prediction of "No".<br>
+                </p>
+                <div class="image-center-wrapper">
+                <img src="Screenshot (346).png">
+                </div>
+                <h2>
+                 C. Textual Rule Description & Leaf Node Distribution
+                </h2>
+                <p>
+                    	Strike_Rate > 122: Yes {Yes=9, No=0} — This rule covers 9 total instances from the dataset, all of which fall perfectly into the positive class, confirming a clean split with zero mixing.<br>
+                	Strike_Rate <= 122: No {Yes=0, No=26} — This rule covers 26 instances, all of which are perfectly classified into the negative class.<br>
+
+                </p>
+                <div class="image-center-wrapper">
+                <img src="Screenshot (347).png"></div>
+                <h2>
+                    D. Evaluation Metrics & Confusion Matrix
+                </h2>
+                <p>
+                    As verified by the evaluation results in the model achieves an exemplary Accuracy of 100.00% on the testing subset.<br>
+                	The confusion matrix shows a flawless classification record with 4 True Positives (pred. Yes / true Yes) and 11 True Negatives (pred. No / true No), resulting in perfect 100% Class Precision and 100% Class Recall across both categories.<br>
+
+                </p>
+                <div class="image-center-wrapper">
+                <img src="Screenshot (348).png">
+                </div>
+
+            <h1>7. Model Evaluation (Testing Results)</h1>
+            <p>
+                Model testing achieved perfect results across both platforms. In Altair AI Studio, the pipeline evaluated the testing split with 100% accuracy, flawlessly classifying 4 positive (true Yes) and 11 negative (true No) match instances with zero errors. This exact decision boundary (SR > 122) was successfully validated in SWISH Prolog, where a query for match1 (135 SR) correctly inferred Result = 'Yes', and a boundary contradiction check query correctly returned false, proving the knowledge base is completely accurate and logically consistent.
+            </p>
+            <div class="image-center-wrapper">
+                <img src="Screenshot (346).png">
+            </div>
+            <h1>Entropy clculation</h1>
+            <p>
+                <h3>Parent Entropy Calculation(before split)</h3>
+                <P>Total instances: 50<br>Target Achieved (Yes): 13<br>Target Not Achieved (No): 37
+                </p>
+                <H3>The probabilities are:</H3>
+                <p>
+                    P(YES) 13/50 = 0.26   <BR>P(NO) 37/50 = 0.74
+                        <h3> Substituting these values into entropy formula</h3>
+                      
+                </p>
+                <p>   Now Substituring there values into entropy formula</p>
+                <div class="image-center-wrapper">
+                <img src="WhatsApp Image 2026-05-31 at 11.51.34 PM.jpeg">
+                </div>
+                <h3>Childs Nodes Entropy Calculation</h3>
+                <p>Accourding to the decision tree workflow split rule Strike_Rate <=122 vs strike_rate>=122:</p>
+            <h3>Left Node Strike Rate<=122</h3>
+            <p>Total Sub-instances: 37<br>Class Distribution:(Yes) = 0, (No) = 37<br>probability P(no)=37/37 1.0, P(yes)=0</p>
+                <div class="image-center-wrapper">
+                    <img src="WhatsApp Image 2026-05-31 at 11.53.35 PM.jpeg">
+
+                </div>
+                <h3> Right Node Strike_Rate > 122</h3>
+                <p>
+                    Total Sub-instances: 13 <br> Class Distribution: (Yes) = 13, (No) = 0 <br> Probability P (yes)=13/13=1.0 P(no)=0
+                </p>
+                    <div class="image-center-wrapper">
+                        <img src="WhatsApp Image 2026-05-31 at 11.54.39 PM.jpeg">
+                    </div>
+                    <h3> Information Gain (IG)</h3>
+                    <p>
+                        Information Gain measures the reduction in entropy after splitting the dataset. It is calculated as:</p>
+                           <div class="image-center-wrapper">
+                            <img src="WhatsApp Image 2026-05-31 at 11.55.15 PM.jpeg">
+                           </div>
+                           <p>Weighted remaining entropy calculation <br> Weighted remaining entropy (37/50)*0 +(13/50)*0 =0</p>
+                           <h3>Final Infor Gain</h3>
+                           <p>
+                            Information Gain = 0.8268 - 0 = 0.8268$$
+                           </p>
+            <h1>8. Rule Extraction</h1>
+            <p>
+                The following explicit IF-THEN classification rules are extracted directly from the trained Decision Tree model:<br>
+1.	Rule 1: IF Strike_Rate > 122 THEN Target_Achieved = 'Yes'<br>
+2.	Rule 2: IF Strike_Rate <= 122 THEN Target_Achieved = 'No'<br>
+
+
+            </p>
+            <div class="image-center-wrapper">
+                <img src="Screenshot (348).png">
+            </div>
+            <h1>9.Rules Formation In Pure AI Logic</h1>
+            <p>
+                To bridge the gap between machine learning outcomes and computational logic, the derived decision tree rules are formalized into a language that computing environments can process natively. This logic is mapped across two distinct granularities: starting with basic conditional dependencies (Propositional Logic), and then advancing to absolute statements that universally govern every entry in the database (First-Order Logic).
+            </p>
+            <h2>
+                Propsitional Logic
+            </h2>
+            <p>
+                P1 : StrikeRate (High)   ->   TargetAchieved (Yes)<br>
+P2 : StrikeRate (Low)    ->   TargetAchieved (No)
+            </p>
+              <h2>
+                First Order Logic
+            </h2>
+            <p>For all x [ StrikeRate(x, high)   ->   TargetAchieved(x, yes) ]<br>
+For all x [ StrikeRate(x, low)    ->   TargetAchieved(x, no)  ]</p>
+            <h1>10.Prolog Implementation</h1>
+            <h3>Facts</h3>
+            <p>
+
+match_data(match1, 170.59).<br>
+match_data(match2, 116.32).<br>
+match_data(match3, 132.29).<br>
+match_data(match4, 104.17).<br>
+match_data(match5, 71.43).<br>
+match_data(match6, 143.75).<br>
+match_data(match7, 83.33).<br>
+match_data(match8, 138.89).<br>
+match_data(match9, 120).<br>
+match_data(match10, 124).<br>
+match_data(match11, 141.46).<br>
+match_data(match12, 55.37).<br>
+match_data(match13, 56.25).<br>
+match_data(match14, 72.72).<br>
+match_data(match15, 41).<br>
+match_data(match16, 85).<br>
+match_data(match17, 56).<br>
+match_data(match18, 142.31).<br>
+match_data(match19, 100).<br>
+match_data(match20, 0).<br>
+match_data(match21, 128).<br>
+match_data(match22, 158).<br>
+match_data(match23, 92).<br>
+match_data(match24, 51).<br>
+match_data(match25, 44).<br>
+match_data(match26, 86).<br>
+match_data(match27, 80).<br>
+match_data(match28, 76).<br>
+match_data(match29, 56).<br>
+match_data(match30, 104).<br>
+match_data(match31, 34).<br>
+match_data(match32, 27).<br>
+match_data(match33, 56).<br>
+match_data(match34, 115).<br>
+match_data(match35, 132).<br>
+match_data(match36, 128).<br>
+match_data(match37, 112).<br>
+match_data(match38, 188).<br>
+match_data(match39, 79).<br>
+match_data(match40, 118).<br>
+match_data(match41, 173).<br>
+match_data(match42, 38).<br>
+match_data(match43, 0).<br>
+match_data(match44, 51).<br>
+match_data(match45, 60).<br>
+match_data(match46, 7).<br>
+match_data(match47, 91).<br>
+match_data(match48, 87).<br>
+match_data(match49, 98).<br>
+match_data(match50, 79).</p>
+
+            </P>
+<h2>
+    Rules Coding
+</h2>
+
+<p>
+   
+target_achieved(Match, 'Yes') :-<br>
+    match_data(Match, StrikeRate),<br>
+    StrikeRate > 122.<br>
+
+target_achieved(Match, 'No') :-<br>
+    match_data(Match, StrikeRate),<br>
+    StrikeRate =< 122.
+</p>
+<h1>Queries</h1>
+<p>
+    target_achieved(match1, Result).<br>
+    target_achieved(match2, Result).<br>
+    target_achieved(Match, 'Yes').<br>
+    target_achieved(match4, 'Yes').
+
+</p>
+ <div class="image-center-wrapper">
+    <img src="Screenshot (355).png">
+ </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

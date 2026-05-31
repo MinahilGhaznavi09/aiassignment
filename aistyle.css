@@ -1,0 +1,85 @@
+/* GLOBAL STYLES */
+body {
+    background-color: #0d233a;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 80px 40px 40px 40px; /* Top padding barha di taake fixed button content ko na chupaye */
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* BACK BUTTON (Fixed position with highest z-index layer priority) */
+.back-btn {
+    position: fixed;   
+    top: 20px;
+    left: 40px;
+    z-index: 9999;     /* PPT ke upar show hone ke liye layer setup */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background-color: #4da6ff;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #3385cc;
+    transform: translateX(-3px); /* Subtle shift effect on hover */
+}
+
+/* PPT SCREEN WRAPPER (Aspect Ratio Responsive Design) */
+.ppt-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    background-color: #132d4a;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    margin-bottom: 40px;
+    border: 1px solid #204060;
+}
+
+.ppt-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* CODE VISUAL PANEL */
+.code-section {
+    background-color: #ffffff;
+    color: #333333;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+
+.code-section h2 {
+    margin-top: 0;
+    color: #0d233a;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #eeeeee;
+    padding-bottom: 10px;
+}
+
+pre {
+    background-color: #f7f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    border-left: 4px solid #4da6ff;
+}
